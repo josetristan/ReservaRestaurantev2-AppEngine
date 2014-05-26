@@ -1,0 +1,220 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://myapp.appspot.com/_ah/api",
+  "name" : "reservaendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://myapp.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "jtristan.com",
+  "ownerName" : "jtristan.com",
+  "packagePath" : "reservarestaurantev2.entidades",
+  "methods" : {
+    "reservaendpoint.listReserva" : {
+      "path" : "reserva",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.listReserva",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "reservaendpoint.updateReserva" : {
+      "path" : "reserva",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.updateReserva",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "reservaendpoint.insertReserva" : {
+      "path" : "reserva",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.insertReserva",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "reservaendpoint.removeReserva" : {
+      "path" : "reserva/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.removeReserva",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "reservaendpoint.getReserva" : {
+      "path" : "reserva/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.getReserva",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_Reserva" : {
+        "id" : "CollectionResponse_Reserva",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Reserva"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Reserva" : {
+        "id" : "Reserva",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "nombreUsuario" : {
+            "type" : "string"
+          },
+          "nombreRestaurante" : {
+            "type" : "string"
+          },
+          "estrellas" : {
+            "type" : "string"
+          },
+          "direccionTipo" : {
+            "type" : "string"
+          },
+          "direccionCalle" : {
+            "type" : "string"
+          },
+          "direccionNumero" : {
+            "type" : "integer"
+          },
+          "nombreComensales" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "horaReserva" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "numeroPersonas" : {
+            "type" : "integer"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.listReserva" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Reserva"
+        }
+      },
+      "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.updateReserva" : {
+        "request" : {
+          "$ref" : "Reserva"
+        },
+        "response" : {
+          "$ref" : "Reserva"
+        }
+      },
+      "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.insertReserva" : {
+        "request" : {
+          "$ref" : "Reserva"
+        },
+        "response" : {
+          "$ref" : "Reserva"
+        }
+      },
+      "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.removeReserva" : {
+      },
+      "com.jtristan.reservarestaurantev2.entidades.ReservaEndpoint.getReserva" : {
+        "response" : {
+          "$ref" : "Reserva"
+        }
+      }
+    }
+  }
+}

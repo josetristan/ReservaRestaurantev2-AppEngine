@@ -1,0 +1,219 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://myapp.appspot.com/_ah/api",
+  "name" : "usuarioendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://myapp.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "jtristan.com",
+  "ownerName" : "jtristan.com",
+  "packagePath" : "reservarestaurantev2.entidades",
+  "methods" : {
+    "usuarioendpoint.getUsuario" : {
+      "path" : "usuario/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.getUsuario",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "usuarioendpoint.updateUsuario" : {
+      "path" : "usuario",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.updateUsuario",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "usuarioendpoint.listUsuario" : {
+      "path" : "usuario",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.listUsuario",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "usuarioendpoint.removeUsuario" : {
+      "path" : "usuario/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.removeUsuario",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "usuarioendpoint.insertUsuario" : {
+      "path" : "usuario",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.insertUsuario",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Usuario" : {
+        "id" : "Usuario",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "nombre" : {
+            "type" : "string"
+          },
+          "apellidos" : {
+            "type" : "string"
+          },
+          "cuentaGoogle" : {
+            "$ref" : "User"
+          }
+        }
+      },
+      "User" : {
+        "id" : "User",
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string"
+          },
+          "authDomain" : {
+            "type" : "string"
+          },
+          "userId" : {
+            "type" : "string"
+          },
+          "federatedIdentity" : {
+            "type" : "string"
+          },
+          "nickname" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_Usuario" : {
+        "id" : "CollectionResponse_Usuario",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Usuario"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.getUsuario" : {
+        "response" : {
+          "$ref" : "Usuario"
+        }
+      },
+      "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.updateUsuario" : {
+        "request" : {
+          "$ref" : "Usuario"
+        },
+        "response" : {
+          "$ref" : "Usuario"
+        }
+      },
+      "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.listUsuario" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Usuario"
+        }
+      },
+      "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.removeUsuario" : {
+      },
+      "com.jtristan.reservarestaurantev2.entidades.UsuarioEndpoint.insertUsuario" : {
+        "request" : {
+          "$ref" : "Usuario"
+        },
+        "response" : {
+          "$ref" : "Usuario"
+        }
+      }
+    }
+  }
+}
